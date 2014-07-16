@@ -99,3 +99,4 @@ Corlib/*.nlp
 /Upstream/OpenTKHeaderParser
 *.RuntimeProfile
 *.out
+/Libraries/ES7
