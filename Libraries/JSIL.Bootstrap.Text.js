@@ -693,6 +693,61 @@ JSIL.MakeClass("System.Object", "System.String", true, [], function ($) {
   $.Field({Static: true , Public: true }, "Empty", $.String, "");
 });
 
+// NOTE (Mispy): This is just a stub to make ordinal comparisons work.
+// A true StringComparer would first require an implementation of CultureInfo.
+JSIL.ImplementExternals(
+  "System.StringComparer", function ($) {
+    $.Method({Static:false, Public:true }, ".ctor", 
+      (JSIL.MethodSignature.Void), 
+      function _ctor () {
+      }
+    );
+
+    $.Method({Static: true , Public: true }, "Create",
+      new JSIL.MethodSignature($jsilcore.TypeRef("System.StringComparer"), [$jsilcore.TypeRef("System.Globalization.CultureInfo"), $.Boolean], []),
+      function(culture, ignoreCase) {
+        var comparer = new $jsilcore.System.StringComparer();
+        comparer.culture = culture;
+        comparer.ignoreCase = ignoreCase;
+        return comparer;
+      }
+    );
+
+    $.Method({Static: true , Public: true }, "get_Ordinal",
+      new JSIL.MethodSignature($jsilcore.TypeRef("System.StringComparer"), [], []),
+      function() {
+        return $jsilcore.System.StringComparer.Create(null, false);
+      }
+    );
+
+    $.Method({Static: true , Public: true }, "get_OrdinalIgnoreCase",
+      new JSIL.MethodSignature($jsilcore.TypeRef("System.StringComparer"), [], []),
+      function() {
+        return $jsilcore.System.StringComparer.Create(null, true);
+      }
+    );
+
+    $.Method({Static: false, Public: true }, "Compare",
+      new JSIL.MethodSignature($.Int32, [$.String, $.String], []),
+      function(strA, strB) {
+        if (this.culture != null)
+          JSIL.RuntimeError("non-ordinal StringComparer comparisons are not implemented");
+        return $jsilcore.System.String.Compare(strA, strB, this.ignoreCase ? $jsilcore.System.StringComparison.OrdinalIgnoreCase : $jsilcore.System.StringComparison.Ordinal);
+      }
+    );
+  }
+);
+
+JSIL.MakeClass("System.Object", "System.StringComparer", true, [], function ($) {
+  $.Property({Static:true , Public:true }, "Ordinal");
+  $.Property({Static:true , Public:true }, "OrdinalIgnoreCase");
+
+  $.ImplementInterfaces(
+    "System.Collections.IComparer",
+    //"System.Collections.Generic.IEqualityComparer"
+  );
+});
+
 JSIL.MakeEnum(
   "System.StringComparison", true, {
     CurrentCulture: 0, 
@@ -703,6 +758,7 @@ JSIL.MakeEnum(
     OrdinalIgnoreCase: 5
   }, false
 );
+
 
 JSIL.EscapeJSRegex = function (regexText) {
   return regexText.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
