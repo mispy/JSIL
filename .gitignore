@@ -4,6 +4,7 @@
 *.metaproj
 _ReSharper.*
 *.ReSharper
+*.GhostDoc.xml
 Compiler/obj
 Compiler/Profiles/*/obj
 Compiler/Profiles/*/bin
@@ -109,3 +110,8 @@ pingme.txt
 /Tests/EmscriptenTestCases/common/common.lib
 /Tests/EmscriptenTestCases/common/common.obj
 /Tests/EmscriptenTestCases/common.js.map
+/Examples/FNA/HelloWorld/bin
+/Examples/FNA/HelloWorld/obj
+/Examples/FNA/HelloWorld/JSILProxies/bin
+/Examples/FNA/HelloWorld/JSILProxies/obj
+
