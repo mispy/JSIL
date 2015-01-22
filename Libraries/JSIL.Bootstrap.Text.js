@@ -743,7 +743,7 @@ JSIL.MakeClass("System.Object", "System.StringComparer", true, [], function ($) 
   $.Property({Static:true , Public:true }, "OrdinalIgnoreCase");
 
   $.ImplementInterfaces(
-    "System.Collections.IComparer",
+    "System.Collections.IComparer"
     //"System.Collections.Generic.IEqualityComparer"
   );
 });

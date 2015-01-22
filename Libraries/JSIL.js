@@ -285,9 +285,11 @@ var $jsilloaderstate = {
     contentManifest["JSIL"].push(["Library", "System.Windows.js"]);
   }
 
-  if (config.sdl2)
-    contentManifest["JSIL"].push(["Library", "SDL2.js"]);
-  
+  if (config.sdl2) {
+    contentManifest["JSIL"].push(["Library", "SDL2/Emscripten.SDL2.js"]);
+    contentManifest["JSIL"].push(["Library", "SDL2/SDL2.js"]);
+  }
+
   if (config.xna) {
     contentManifest["JSIL"].push(["Library", "XNA/XNA4.js"]);
 
