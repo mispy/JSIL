@@ -26,6 +26,7 @@
     <script type="text/javascript">
       window.Module = {};
       Module.canvas = document.getElementById("canvas");
+      Module.memoryInitializerPrefixURL = "/Libraries/SDL2/";
       function runMain () {
         // We can't invoke Main() since it disposes the Game immediately, breaking everything.
         window.asm = JSIL.GetAssembly("HelloWorld", true);

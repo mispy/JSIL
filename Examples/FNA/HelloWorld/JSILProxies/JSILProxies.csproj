@@ -38,7 +38,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Utilities.cs" />
+    <Compile Include="Proxies.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="JSIL.Meta, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
