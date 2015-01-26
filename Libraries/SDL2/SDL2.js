@@ -73,3 +73,66 @@ JSIL.ImplementExternals("SDL2.SDL", function ($) {
     }
   );
 });
+
+JSIL.ImplementExternals("SDL2.SDL", function ($) {
+  $.Method({Static: true, Public: true}, "SDL_GetWindowDisplayIndex",
+    new JSIL.MethodSignature($.Int32, [$jsilcore.TypeRef("System.IntPtr")], []),
+    function SDL_GetWindowDisplayIndex(window) {
+      return Module.ccall("SDL_GetWindowDisplayIndex", 'number', ['number'], [window]);
+    }
+  );
+});
+
+JSIL.ImplementExternals("SDL2.SDL", function ($) {
+  $.Method({Static: true, Public: true}, "SDL_GetNumDisplayModes",
+    new JSIL.MethodSignature($.Int32, [$.Int32], []),
+    function SDL_GetNumDisplayModes(displayIndex) {
+      return Module.ccall("SDL_GetNumDisplayModes", 'number', ['number'], [displayIndex]);
+    }
+  );
+});
+
+JSIL.ImplementExternals("SDL2.SDL", function ($) {
+  $.Method({Static: true, Public: true}, "SDL_DisableScreenSaver",
+    new JSIL.MethodSignature(null, [], []),
+    function SDL_DisableScreenSaver() {
+      return Module.ccall("SDL_DisableScreenSaver", null, [], []);
+    }
+  );
+});
+
+JSIL.ImplementExternals("SDL2.SDL", function ($) {
+  $.Method({Static: true, Public: true}, "SDL_ShowCursor",
+    new JSIL.MethodSignature($.Int32, [$.Int32], []),
+    function SDL_ShowCursor(toggle) {
+      return Module.ccall("SDL_ShowCursor", 'number', ['number'], [toggle]);
+    }
+  );
+});
+
+JSIL.ImplementExternals("SDL2.SDL", function ($) {
+  $.Method({Static: true, Public: true}, "SDL_GL_CreateContext",
+    new JSIL.MethodSignature($jsilcore.TypeRef("System.IntPtr"), [$jsilcore.TypeRef("System.IntPtr")], []),
+    function SDL_GL_CreateContext(window) {
+      return Module.ccall("SDL_GL_CreateContext", 'number', ['number'], [window]);
+    }
+  );
+});
+
+JSIL.ImplementExternals("SDL2.SDL", function ($) {
+  $.Method({Static: true, Public: true}, "SDL_GL_GetProcAddress",
+    new JSIL.MethodSignature($jsilcore.TypeRef("System.IntPtr"), [$.String], []),
+    function SDL_GL_GetProcAddress(name) {
+      return Module.ccall("SDL_GL_GetProcAddress", 'number', ['string'], [name]);
+    }
+  );
+});
+
+JSIL.ImplementExternals("SDL2.SDL", function ($) {
+  $.Method({Static: true, Public: true}, "SDL_GetDisplayMode",
+    new JSIL.MethodSignature($.Int32, [$.Int32, $.Int32, $sdlasm.TypeRef("SDL2.SDL_SDL_DisplayMode")], []),
+    function SDL_GetDisplayMode(displayIndex, modeIndex, /* out */ mode) {
+      return Module.ccall("SDL_GetDisplayMode", 'number', ['number', 'number', 'number'], [displayIndex, modeIndex, mode]);
+    }
+  );
+});
